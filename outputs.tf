@@ -3,7 +3,7 @@
 
 output "vpc_id" {
   description = "vcp id"
-  value       = aws_vpc.example.id
+  value       = aws_vpc.dorex_oba.id
 }
 
 output "public_ip" {

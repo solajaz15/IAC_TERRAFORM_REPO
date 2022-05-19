@@ -1,6 +1,6 @@
 
 # Create a VPC
-resource "aws_vpc" "example" {
+resource "aws_vpc" "dorex_oba" {
   cidr_block = var.cidr_block
 }
 
@@ -9,7 +9,7 @@ resource "aws_vpc" "example" {
 
 resource "aws_subnet" "public_subnet" {
   vpc_id     = local.vpc_id
-  cidr_block = "10.0.0.0/24"
+  cidr_block = var.pulic-subnet-cidr
 
   tags = {
     Name = "public_subnet"
@@ -20,18 +20,18 @@ resource "aws_subnet" "public_subnet" {
 
 resource "aws_subnet" "private_subnet" {
   vpc_id     = local.vpc_id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.private-subnet-cidr
 
   tags = {
     Name = "private_subnet"
   }
 }
 
-
+#Ec2
 resource "aws_instance" "dorex_oba" {
   ami           = var.instance-ami
   instance_type = var.instance-type
-  subnet_id = aws_subnet.public_subnet.id
+ # subnet_id     = aws_subnet.public_subnet.id
 
   tags = {
     Name = "dorex_oba"
@@ -44,3 +44,12 @@ resource "aws_instance" "dorex_oba" {
 #ec2 id 
 # resources name.logical name.public_id
 
+#Internet gateway
+
+#resource "aws_internet_gateway" "my_internet_gateway" {
+ # vpc_id = local.vpc_id
+
+ # tags = {
+   # Name = "dorex_oba"
+ # }
+#}

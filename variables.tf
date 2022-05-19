@@ -32,3 +32,15 @@ variable "instance-type" {
 }
 
 
+variable "pulic-subnet-cidr" {
+  type        = string
+  description = "pub-subnet-cidr"
+  default     = "10.0.0.0/24"
+}
+
+
+variable "private-subnet-cidr" {
+  type        = string
+  description = "pri-subnet-cidr"
+  default     = "10.0.1.0/24"
+}
