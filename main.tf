@@ -4,12 +4,37 @@ resource "aws_vpc" "example" {
   cidr_block = var.cidr_block
 }
 
-resource "aws_instance" "dorex_oba" {
-  ami           = "ami-0022f774911c1d690"
-  instance_type = "t2.micro"
+
+# creating Public subnet
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id     = local.vpc_id
+  cidr_block = "10.0.0.0/24"
 
   tags = {
-    Name = "terraform"
+    Name = "public_subnet"
+  }
+}
+
+#creating private subnet
+
+resource "aws_subnet" "private_subnet" {
+  vpc_id     = local.vpc_id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "private_subnet"
+  }
+}
+
+
+resource "aws_instance" "dorex_oba" {
+  ami           = var.instance-ami
+  instance_type = var.instance-type
+  subnet_id = aws_subnet.public_subnet.id
+
+  tags = {
+    Name = "dorex_oba"
   }
 }
 
@@ -18,3 +43,4 @@ resource "aws_instance" "dorex_oba" {
 
 #ec2 id 
 # resources name.logical name.public_id
+
