@@ -22,5 +22,6 @@ output "instance_ami" {
   value       = aws_instance.dorex_oba.ami
 }
 
+
 #outputs (is used to retrieve various resources attribute)
 # Output--is used to call out various resources

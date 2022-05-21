@@ -10,6 +10,8 @@ resource "aws_vpc" "dorex_oba" {
 resource "aws_subnet" "public_subnet" {
   vpc_id     = local.vpc_id
   cidr_block = var.pulic-subnet-cidr
+  availability_zone = data.aws_availability_zones.azs.names[0]
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "public_subnet"
@@ -21,6 +23,7 @@ resource "aws_subnet" "public_subnet" {
 resource "aws_subnet" "private_subnet" {
   vpc_id     = local.vpc_id
   cidr_block = var.private-subnet-cidr
+  availability_zone = data.aws_availability_zones.azs.names[1]
 
   tags = {
     Name = "private_subnet"

@@ -16,7 +16,7 @@ variable "cidr_block" {
 variable "region" {
   type        = string
   description = "region_value"
-  default     = "us-east-1"
+  default     = "us-west-2"
 }
 
 variable "instance-ami" {
