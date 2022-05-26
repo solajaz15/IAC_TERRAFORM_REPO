@@ -16,7 +16,7 @@ variable "cidr_block" {
 variable "region" {
   type        = string
   description = "region_value"
-  default     = "us-west-2"
+  default     = "us-east-1"
 }
 
 variable "instance-ami" {
@@ -43,4 +43,17 @@ variable "private-subnet-cidr" {
   type        = string
   description = "pri-subnet-cidr"
   default     = "10.0.1.0/24"
+}
+
+variable "sample-count" {
+  type = bool
+  default = true
+  
+}
+
+
+variable "sample-for_each" {
+  type = list
+  default = ["t3.micro", "t2micro", "t2.large"]
+  
 }
